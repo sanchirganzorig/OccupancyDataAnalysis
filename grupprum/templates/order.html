@@ -1,0 +1,264 @@
+{% extends 'base.html' %}
+{%block content%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- Basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0">
+
+    <!-- Site Metas -->
+    <title>Food Funday Restaurant - One page HTML Responsive</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Site Icons -->
+    <link rel="shortcut icon" href="../static/template-static/images/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="../static/template-static/images/apple-touch-icon.png">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../static/template-static/css/bootstrap.min.css">
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="../static/template-static/css/style.css">
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="../static/template-static/css/responsive.css">
+    <!-- color -->
+    <link id="changeable-colors" rel="stylesheet" href="../static/template-static/css/colors/orange.css" />
+
+    <!-- Modernizer -->
+    <script src="../static/template-static/js/modernizer.js"></script>
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+  <div id="menu" class="menu-main pad-top-100 pad-bottom-100">
+      <div class="container">
+          <div class="row">
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <div class="wow fadeIn" data-wow-duration="1s" data-wow-delay="0.1s">
+                      <h2 class="block-title text-center">
+					Our Menu
+				</h2>
+                      <p class="title-caption text-center">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. </p>
+                  </div>
+                  <div class="tab-menu">
+                      <div class="slider slider-nav">
+                          <div class="tab-title-menu">
+                              <h2>STARTERS</h2>
+                              <p> <i class="flaticon-canape"></i> </p>
+                          </div>
+                          <div class="tab-title-menu">
+                              <h2>MAIN DISHES</h2>
+                              <p> <i class="flaticon-dinner"></i> </p>
+                          </div>
+                          <div class="tab-title-menu">
+                              <h2>DESERTS</h2>
+                              <p> <i class="flaticon-desert"></i> </p>
+                          </div>
+                          <div class="tab-title-menu">
+                              <h2>DRINKS</h2>
+                              <p> <i class="flaticon-coffee"></i> </p>
+                          </div>
+                      </div>
+                      <div class="slider slider-single">
+                        <div>
+                          {% for product in products %}
+                          <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
+                              <div class="offer-item">
+                                  <img src="../static/template-static/images/menu-item-thumbnail-01.jpg" alt="" class="img-responsive">
+                                  <div>
+                                      <h3>{{ product.name }}</h3>
+                                      <p>
+                                          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc mollis eleifend dapibus.
+                                      </p>
+                                  </div>
+                                  <form class="" action="{{ url_for("add_to_cart") }}" method="post">
+                                    <input type="hidden" name="product_id" value={{ product.id }}>
+                                    <input type="number" name="quantity" min="1" value="1">
+                                    <button type="submit" class="offer-price" >{{ product.price }} kr</button>
+                                  </form>
+                              </div>
+                          </div>
+                          {% endfor %}
+                        </div>
+                          <div>
+                              <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
+                                  <div class="offer-item">
+                                      <img src="../static/template-static/images/menu-item-thumbnail-04.jpg" alt="" class="img-responsive">
+                                      <div>
+                                          <h3>MEAT FEAST PIZZA</h3>
+                                          <p>
+                                              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc mollis eleifend dapibus.
+                                          </p>
+                                      </div>
+                                      <span class="offer-price">$5</span>
+                                  </div>
+                              </div>
+                              <!-- end col -->
+                              <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
+                                  <div class="offer-item">
+                                      <img src="../static/template-static/images/menu-item-thumbnail-05.jpg" alt="" class="img-responsive">
+                                      <div>
+                                          <h3>CHICKEN TIKKA MASALA</h3>
+                                          <p>
+                                              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc mollis eleifend dapibus.
+                                          </p>
+                                      </div>
+                                      <span class="offer-price">$15</span>
+                                  </div>
+                              </div>
+                              <!-- end col -->
+                              <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
+                                  <div class="offer-item">
+                                      <img src="../static/template-static/images/menu-item-thumbnail-06.jpg" alt="" class="img-responsive">
+                                      <div>
+                                          <h3>SPICY MEATBALLS</h3>
+                                          <p>
+                                              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc mollis eleifend dapibus.
+                                          </p>
+                                      </div>
+                                      <span class="offer-price">$6.5</span>
+                                  </div>
+                              </div>
+                              <!-- end col -->
+                          </div>
+                          <div>
+                              <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
+                                  <div class="offer-item">
+                                      <img src="../static/template-static/images/menu-item-thumbnail-07.jpg" alt="" class="img-responsive">
+                                      <div>
+                                          <h3>CHOCOLATE FUDGECAKE</h3>
+                                          <p>
+                                              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc mollis eleifend dapibus.
+                                          </p>
+                                      </div>
+                                      <span class="offer-price">$4.5</span>
+                                  </div>
+                              </div>
+                              <!-- end col -->
+                              <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
+                                  <div class="offer-item">
+                                      <img src="../static/template-static/images/menu-item-thumbnail-08.jpg" alt="" class="img-responsive">
+                                      <div>
+                                          <h3>CHICKEN TIKKA MASALA</h3>
+                                          <p>
+                                              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc mollis eleifend dapibus.
+                                          </p>
+                                      </div>
+                                      <span class="offer-price">$9.5</span>
+                                  </div>
+                              </div>
+                              <!-- end col -->
+                              <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
+                                  <div class="offer-item">
+                                      <img src="../static/template-static/images/menu-item-thumbnail-09.jpg" alt="" class="img-responsive">
+                                      <div>
+                                          <h3>CHICKEN TIKKA MASALA</h3>
+                                          <p>
+                                              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc mollis eleifend dapibus.
+                                          </p>
+                                      </div>
+                                      <span class="offer-price">$10</span>
+                                  </div>
+                              </div>
+                              <!-- end col -->
+                          </div>
+                          <div>
+                              <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
+                                  <div class="offer-item">
+                                      <img src="../static/template-static/images/menu-item-thumbnail-10.jpg" alt="" class="img-responsive">
+                                      <div>
+                                          <h3>MEAT FEAST PIZZA</h3>
+                                          <p>
+                                              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc mollis eleifend dapibus.
+                                          </p>
+                                      </div>
+                                      <span class="offer-price">$12.5</span>
+                                  </div>
+                              </div>
+                              <!-- end col -->
+                              <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
+                                  <div class="offer-item">
+                                      <img src="../static/template-static/images/menu-item-thumbnail-09.jpg" alt="" class="img-responsive">
+                                      <div>
+                                          <h3>CHICKEN TIKKA MASALA</h3>
+                                          <p>
+                                              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc mollis eleifend dapibus.
+                                          </p>
+                                      </div>
+                                      <span class="offer-price">$9.5</span>
+                                  </div>
+                              </div>
+                              <!-- end col -->
+                              <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
+                                  <div class="offer-item">
+                                      <img src="../static/template-static/images/menu-item-thumbnail-08.jpg" alt="" class="img-responsive">
+                                      <div>
+                                          <h3>CHICKEN TIKKA MASALA</h3>
+                                          <p>
+                                              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc mollis eleifend dapibus.
+                                          </p>
+                                      </div>
+                                      <span class="offer-price">$5.5</span>
+                                  </div>
+                              </div>
+                              <!-- end col -->
+                          </div>
+                      </div>
+                  </div>
+                  <!-- end tab-menu -->
+              </div>
+              <!-- end col -->
+          </div>
+          <!-- end row -->
+      </div>
+      <!-- end container -->
+  </div>
+  <!-- end menu -->
+
+  <div class="container">
+    <div class="shopping-cart">
+      <div class="shopping-cart-header">
+        <i class="fa fa-shopping-cart cart-icon"></i><span class="badge">{{ session["cart"].items()|length }}</span>
+        <div class="shopping-cart-total">
+          <span class="lighter-text">Total:</span>
+          <span class="main-color-text">{{grand_total}}</span>
+        </div>
+      </div> <!--end shopping-cart-header -->
+
+      <ul class="shopping-cart-items">
+        {% for k, item in session["cart"].items() %}
+        <li class="clearfix">
+          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/cart-item1.jpg" alt="item1" />
+          <span class="item-name">{{item["product_name"]}}</span>
+          <span class="item-price">Subtotal: {{item["subtotal"]}} kr</span>
+          <span class="item-quantity">Quantity: {{item["quantity"]}}</span>
+        </li>
+        {% endfor %}
+
+        <form class="" action="{{url_for('cart')}}" method="post">
+          <input type="hidden" name="grand_total" value="{{grand_total}}">
+          <button type="submit" name="button">Checkout</button>
+        </form>
+    </div> <!--end shopping-cart -->
+  </div> <!--end container -->
+  <!-- ALL JS FILES -->
+  <script src="../static/template-static/js/all.js"></script>
+  <script src="../static/template-static/js/bootstrap.min.js"></script>
+  <!-- ALL PLUGINS -->
+  <script src="../static/template-static/js/custom.js"></script>
+</body>
+
+</html>
+{%endblock%}
