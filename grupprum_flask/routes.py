@@ -6,15 +6,25 @@ import math
 @app.route("/")
 @app.route("/home")
 def home():
-    unread_logs = db.child("Ebb").get()
 
-    log0 = round(unread_logs.val()['log0']/1000)
 
-    return "{}".format(log0)
+    ebblog = round(db.reference("Ebb").get()/1000)
+    now = round(datetime.now().timestamp())
 
-@app.route("/receive", methods=["POST"])
-def receive():
-    data = request.json()
-    print(data)
+    print("log: " + str(ebblog))
+    print("now: " + str(now))
+    print("difference in seconds: " + str(now - ebblog))
 
-    return "receive"
+    if now - ebblog > 60:
+        ebbstate = True
+    else:
+        ebbstate = False
+
+    return render_template("index.html", ebbstate=ebbstate)
+
+# @app.route("/receive", methods=["POST"])
+# def receive():
+    # data = request.json()
+    # print(data)
+    #
+    # return "receive"
