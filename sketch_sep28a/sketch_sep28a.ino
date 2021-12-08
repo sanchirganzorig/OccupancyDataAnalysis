@@ -48,6 +48,9 @@ int PIR = 2; //PIR connected to GPIO 0
 
 void setup(){
   Serial.begin(9600);
+
+  pinMode(LED_BUILTIN, OUTPUT);
+  
   WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
   Serial.print("Connecting to Wi-Fi");
   while (WiFi.status() != WL_CONNECTED){
@@ -105,6 +108,11 @@ void setup(){
 }
 
 void loop(){
+
+  digitalWrite(LED_BUILTIN, HIGH); 
+  delay(100);                   
+  digitalWrite(LED_BUILTIN, LOW);
+  
   if (Firebase.ready())
   {
     PIRstate = digitalRead(PIR);
