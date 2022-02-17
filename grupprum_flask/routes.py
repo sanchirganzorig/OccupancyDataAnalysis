@@ -1,5 +1,6 @@
 from flask import request, render_template, redirect, url_for, session
-from grupprum_flask import app
+from grupprum_flask import app, db
+from grupprum_flask.models import Logs
 from datetime import datetime
 import math
 
@@ -19,6 +20,14 @@ def home():
     #     ebbstate = False
 
     return "home"
+
+@app.route('/testdb')
+def testdb():
+    try:
+        db.session.query("1").from_statement("SELECT 1").all()
+        return '<h1>It works.</h1>'
+    except:
+        return '<h1>Something is broken.</h1>'
 
 @app.route("/log", methods=["POST"])
 def log():
