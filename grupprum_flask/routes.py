@@ -1,7 +1,6 @@
 from flask import request, render_template, redirect, url_for, session
 from grupprum_flask import app, db
 from grupprum_flask.models import Logs
-from datetime import datetime
 import math
 
 @app.route("/")
@@ -18,6 +17,15 @@ def home():
     #     ebbstate = True
     # else:
     #     ebbstate = False
+
+    log1 = Logs(room="rum", time=1)
+
+    print(log1)
+
+    #db.session.add(log1)
+    #print("added")
+    #db.session.commit()
+    #print("commited")
 
     return "home"
 

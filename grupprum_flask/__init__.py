@@ -11,8 +11,10 @@ SQLALCHEMY_DATABASE_URI = "mysql+mysqlconnector://{username}:{password}@{hostnam
     hostname=secrets["mysqlhostname"],
     databasename=secrets["mysqldatabasename"]
 )
+
 app.config["SQLALCHEMY_DATABASE_URI"] = SQLALCHEMY_DATABASE_URI
 app.config["SQLALCHEMY_POOL_RECYCLE"] = 299
+app.config["DEBUG"] = True
 app.config["SECRET_KEY"] = secrets["appsecretkey"]
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
